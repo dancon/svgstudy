@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="370" height="800"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>定义线性渐变的方向</title>
+    <defs>
+        <linearGradient id="three_stops">
+            <stop offset="0%" style="stop-color: #ffcc00"/>
+            <stop offset="50%" style="stop-color: #cc6699"/>
+            <stop offset="100%" style="stop-color: #66cc99"/>
+        </linearGradient>
+
+        <linearGradient id="right_to_left" xlink:href="#three_stops" x1="100%" y1="0%" x2="0%" y2="0%"/>
+        <linearGradient id="down" xlink:href="#three_stops" x1="0%" y1="0%" x2="0%" y2="100%"/>
+        <linearGradient id="up" xlink:href="#three_stops" x1="0%" y1="100%" x2="0%" y2="0%"/>
+        <linearGradient id="diagonal" xlink:href="#three_stops" x1="0%" y1="0%" x2="100%" y2="100%"/>
+
+        <!-- 渐变并不一定要从对象的一边过渡到另一边，我们可以从对象内部的某个非边缘位置过渡到另外一个非边缘位置 -->
+        <!-- 线性渐变中，起点（0%）的点由 (x1, y1) 确定，终点（100%）由(x2, y2) 确定 -->
+        <linearGradient id="partial" x1="20%" y1="30%" x2="40%" y2="80%">
+            <stop offset="0%" style="stop-color: #ffcc00" />
+            <stop offset="33.3%" style="stop-color: #cc6699" />
+            <stop offset="100%" style="stop-color: #66cc99" />
+        </linearGradient>
+
+        <linearGradient id="padded" xlink:href="#partial" spreadMethod="pad"/>
+        <linearGradient id="repeated" xlink:href="#partial" spreadMethod="repeat"/>
+        <linearGradient id="reflected" xlink:href="#partial" spreadMethod="reflect"/>
+
+    </defs>
+
+    <rect x="40" y="20" width="200" height="40" style="fill: url(#three_stops); stroke: black;"/>
+    <rect x="40" y="70" width="200" height="40" style="fill: url(#right_to_left); stroke: black;"/>
+    <rect x="250" y="20" width="40" height="200" style="fill: url(#down); stroke: black;"/>
+    <rect x="300" y="20" width="40" height="200" style="fill: url(#up); stroke: black;"/>
+    <rect x="40" y="120" width="200" height="100" style="fill: url(#diagonal); stroke: black;"/>
+
+    <rect x="40" y="230" width="100" height="100" style="fill: url(#padded); stroke: black;"/>
+    <rect x="150" y="230" width="100" height="100" style="fill: url(#repeated); stroke: black;"/>
+    <rect x="260" y="230" width="100" height="100" style="fill: url(#reflected); stroke: black;"/>
+</svg>
